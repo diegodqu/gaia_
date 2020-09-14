@@ -1,0 +1,24 @@
+{% load static %}
+<!-- header -->
+<header>
+  <div class="header">
+    <div class="w-header w-ancho cf">
+      <div class="w-logo">
+	<a href="{% url 'home' %}"><img src="{% static '' %}img/gaia-logo.png" alt="Logo Gaia Centro Holístico"></a>
+      </div>
+      <nav class="w-nav cf">
+	<ul class="cf">
+	  <li class="w-margen"><a href="{% url 'nosotros' %}">Nosotros</a></li>
+	  <li><img src="{% static '' %}img/border-img.png" alt=""></li>
+	  <li class="w-margen"><a href="{% url 'servicios' %}">Servicios</a></li>
+	  <li><img src="{% static '' %}img/border-img.png" alt=""></li>
+	  <li class="w-margen"><a href="{% url 'promociones' %}">Promociones</a></li>
+          <li><img src="{% static '' %}img/border-img.png" alt=""></li>
+          <li class="w-margen"><a href="{% url 'novedades' %}">Novedades</a></li>
+	  <li><img src="{% static '' %}img/border-img.png" alt=""></li>
+	  <li class="w-margen"><a href="{% url 'contacto' %}">Contacto</a></li>
+	</ul>
+      </nav>
+    </div>
+  </div>
+</header>

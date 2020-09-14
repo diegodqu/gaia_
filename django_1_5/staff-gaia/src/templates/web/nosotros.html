@@ -1,0 +1,88 @@
+{% extends 'web/base.html' %}
+{% block title %} {{ title }}{% endblock %}
+{% load static %}
+{% block metas %}
+  <meta name="description" content="{{ description }}">
+{%endblock %}
+
+{% block cssadicional %}
+<link href="{% static '' %}css/jquery.bxslider.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="{% static '' %}js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+{%endblock %}
+{% block classbody %}css-nosotros{% endblock %}
+
+{% block content %}
+<section class="w-bg">
+  <div class="slider w-ancho cf">	
+    <ul class="w-slider slider1">
+      {% for row in slyders %}
+      <li><img class="slide" src="{{ row.imagen.url }}" widht="952" height="419" alt=""></li>
+      {% endfor %}
+    </ul>
+    <div class="border"></div>	
+  </div>
+</section>	
+<section class="info-nosotros">	
+  <div class="w-main w-ancho cf">
+    <div class="w-cnt cf">
+      <div class="img">
+	<img src="{% static '' %}img/img-nosotros.png" widht="66" height="67" alt="Nosotros">
+      </div>
+      <div class="title">
+	Nosotros
+      </div>
+    </div>
+    <div class="items cf">
+      <div class="img">
+	<div class="w-menu">
+	  <ul>
+	    {% for row in menu %}
+	      <li><a href="{% url 'nosotros_seccion' slug=row.slug %}" id="menu-nosotros-item-{{ row.slug }}">{{ row.nombre }}</a></li>
+	    {% endfor %}
+	  </ul>
+	</div>
+	<img src="{% static '' %}img/gaia-nosotros.png" width="244" height="244" alt="Gaia - Quienes Somos">
+      </div>
+      <div class="info">
+	<div class="w-text">
+	  {{ nosotros.descripcion|safe }}
+	</div>
+	<div class="enlace">
+	  <a href="{% url 'galeria' %}" title="Visitas instalaciones de Gaia Centro Holistico">VISITA NUESTRAS INSTALACIONES</a>
+	</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+
+{% block jsfinal %}
+<script src="{% static '' %}js/jquery.bxslider.min.js"></script>
+<script type="text/javascript" src="{% static '' %}js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+<script type="text/javascript" src="{% static '' %}js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+<script>
+   $("#menu-nosotros-item-{{ nosotros.slug }}").addClass("w-active");
+</script>
+<script type="text/javascript">
+  $(document).ready(function(){
+  $('.slider1').bxSlider({
+  controls:false,
+  pager:true,
+  auto:'true',
+  pause:'9000'
+  
+  });
+  $(".w-text-fancy").fancybox({
+  'titlePosition'		: 'inside',
+  'transitionIn'		: 'none',
+  'transitionOut'		: 'none'
+  });
+  });
+</script>
+
+
+
+
+{% endblock %}

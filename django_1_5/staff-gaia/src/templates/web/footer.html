@@ -1,0 +1,102 @@
+{% load static %}
+<!-- Footer -->
+
+<footer>
+  <div class="footer-1">
+    <div class="w-info-footer w-ancho cf">
+      <div class="w-info cf">
+	<div class="text">
+	  Llámanos y 
+	  reserva tu cita:
+	</div>
+	<div class="img">
+	  <img src="{% static '' %}img/icon-telef.png" alt="">
+	</div>
+	<div class="u-text">
+	  {{ info.telefono }}
+	  <h1>{{ info.fijo }}</h1>
+	</div>
+      </div>
+      <div class="registro cf">
+	<ul class="cf">
+	  <li>
+	    Registrate para recibir promociones
+	  </li>
+	    
+	  <li>
+	  <form method="post" id="SuscripcionPromo" action="{% url 'suscript' %}" onsubmit="ga('send', 'pageview', '/goals/suscripcion');">
+         {% csrf_token %}
+	    <input type="text" name= "email"  placeholder= "Ingrese su E-mail" class="placeholder mail">
+	  </li>
+      	</ul>
+	<button type="Submit">Enviar</button>
+      </form>
+      </div>
+      {% if form.is_valid %}
+	  <script>
+	    alert("Felicidades esta suscrito");
+	  </script>
+      {% endif %}
+      <div class="w-google-map">
+	<a href="{% url 'contacto' %}" class="w-subtext">
+	  Ubícanos (Google map)
+	</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-2">
+    <div class="w-nav-footer w-ancho cf">
+      <div class="nav-1 cf">
+	<div class="img">
+	  <img src="{% static '' %}img/icon-footer.png" alt="">
+	</div>
+	<div class="w-info-nav">
+	  <nav class="w-nav cf">
+	    <ul class="cf">
+	      <li><a href="{% url 'nosotros' %}">Nosotros</a></li>
+	      <li class="w-spacio"><img src="{% static '' %}img/borde.png" alt=""></li>
+	      <li><a href="{% url 'servicios' %}">Servicios</a></li>
+	      <li class="w-spacio"><img src="{% static '' %}img/borde.png" alt=""></li>
+	      <li><a href="{% url 'promociones' %}">Promociones</a></li>
+	      <li class="w-spacio"><img src="{% static '' %}img/borde.png" alt=""></li>
+	      <li><a href="{% url 'contacto' %}">Contacto</a></li>
+	    </ul>
+	  </nav>
+	  <div class="w-derch-reservado">
+	    <div class="text">
+	      {{info.direccion}}
+	    </div>	
+	  </div>
+	</div>
+      </div>
+      <div class="nav-2 cf">
+	<div class="text-enlace cf">
+	  <div class="text">
+	    Búscanos:
+	  </div>
+	  <div class="w-enlace">
+	    <a class="w-fb" href="{{info.facebook}}" target="_blank">facebook</a>
+	    <a class="w-yt" href="{{info.twitter}}" target="blank">twiter</a>
+	  </div>
+	</div>
+	
+      </div>
+    </div>
+  </div>
+  <div class="footer-3">
+    <div class="w-informacion w-ancho cf">
+      <div class="col1">
+	<h1>Copyright © 2014. Gaia medicina alternativa.</h1>
+      </div>
+      <div class="col2">
+	<div class="w-staff">
+	  <a target="_blank" href="http://www.staffcreativa.pe/">
+	    <li class="w-web-1">Diseño Web:</li>
+	    <li class="w-web-2"><img src="{% static '' %}img/staff.png" alt=""></li>
+	  </a>
+	</div>
+      </div>
+    </div>
+  </div>
+  
+</footer>

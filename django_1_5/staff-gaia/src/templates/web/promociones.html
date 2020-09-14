@@ -1,0 +1,67 @@
+{% extends 'web/base.html' %}
+{% block title %}Promociones y Descuentos en Masajes y Tratamientos | Gaia{% endblock %}
+{% load static %}
+{% block metas %}
+
+  <meta name="description" content="Ingrese y acceda a descuentos especiales en tratamientos de biomagnetismo, tratamiento facial, reflexología, baños de hipertermia y masaje tailandés.">
+{%endblock %}
+{% block cssadicional %}
+  <link href="{% static '' %}css/jquery.bxslider.css" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="{% static '' %}js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+{%endblock %}
+{% block classbody %}css-promociones{% endblock %}
+
+{% block content %}
+  <section class="w-bg">
+    <div class="slider w-ancho">
+      <ul class="w-slider slider1">
+	{% for row in slyders %}
+	  <li><img  src="{{ row.imagen.url }}" width="840" alt=""></li>
+	{% endfor %}			
+      </ul>	
+      <div class="border"></div>
+    </div>	
+  </section>
+  <section>
+    <div class="w-main w-ancho cf">
+      <div class="w-cnt cf">
+	<div class="img">
+	  <img src="{% static '' %}img/icon-promociones.png" width="67" height="67" alt="">
+	</div>
+	<div class="title">
+	  Promociones
+	</div>
+      </div>
+      <div class="cnt-item cf">
+	  {% for row in promos %}
+	<div class="w-items">
+	  <img src="{{ row.imagen1.url }}" width="184" height="184" alt="{{ row.nombre }}">
+	  <a rel="galeria"  class="img-fancy" href="{{ row.imagen2.url }}">
+	    <div class="w-text">
+	      VER MAS
+	    </div>
+	  </a>
+	</div>
+	  {% endfor %}
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
+
+
+{% block jsfinal %}
+  <script src="{% static '' %}js/jquery.bxslider.min.js"></script>
+  <script type="text/javascript" src="{% static '' %}js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+  <script type="text/javascript" src="{% static '' %}js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+
+  <script type="text/javascript">
+     $(document).ready(function(){
+       $(".img-fancy").fancybox();
+     });
+  </script>
+
+
+
+
+{% endblock %}

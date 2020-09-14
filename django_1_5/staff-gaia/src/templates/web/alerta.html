@@ -1,0 +1,44 @@
+﻿{% extends "app/base.html" %}
+
+{% block cssadicional %}
+<link rel="stylesheet" type="text/css" href="/static/js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+{%endblock %}
+{% block classbody %}css-alerta{% endblock %}
+
+{% block content %}
+
+<section class="info-nosotros">	
+	<div class="w-main w-ancho">
+	<style>
+		#fancybox-close{ background: url('{{ STATIC_URL }}img/img-aspa-x.png') 0px 0px no-repeat !important; right: -15px !important; top: -3px !important;}
+		.w-fancy{ width: 50px; }
+	</style>
+	<div class="w-fancy">
+		<a class="img-fancy" href="{{ STATIC_URL }}img/alerta-enviando.png">ver</a>
+		<a class="img-fancy" href="{{ STATIC_URL }}img/alerta-enviado.png">ver</a>
+		<a class="img-fancy" href="{{ STATIC_URL }}img/alerta-error.png">ver</a>
+	</div>
+	</div>
+</section>
+
+{% endblock %}
+
+
+{% block jsfinal %}
+<script src="{{ STATIC_URL }}js/jquery.bxslider.min.js"></script>
+<script type="text/javascript" src="/static/js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+<script type="text/javascript" src="/static/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+	
+<script type="text/javascript">
+$(document).ready(function(){
+  $(".img-fancy").fancybox({
+	'padding'		: '0',
+	'margin'		: '0'
+  });
+});
+</script>
+
+
+
+
+{% endblock %}

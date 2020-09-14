@@ -1,0 +1,37 @@
+{% extends 'web/base.html' %}
+
+{% block title %} Noticias {% endblock %}
+
+{% block content %}
+  <!-- content -->
+  <h1>Noticias</h1>
+
+  <section id="noticias">
+    {% for n in noticias %}
+      <div class="noticia">
+        <h2>{{ n.nombre }}</h2>
+        <div class="detalle">
+          {{ n.detalle|safe|truncatewords_html:20 }}
+          <a href="{% url 'noticias_detalle' slug=n.slug %}">Ver más</a>
+        </div>
+      </div>
+    {% endfor %}
+  </section>
+
+  <section id="pagination">
+    <span class="step-links">
+        {% if noticias.has_previous %}
+            <a href="?n={{ noticias.previous_page_number }}">Anterior</a>
+        {% endif %}
+
+        <span class="current">
+            Página {{ noticias.number }} de {{ noticias.paginator.num_pages }}.
+        </span>
+
+        {% if noticias.has_next %}
+            <a href="?n={{ contacts.next_page_number }}">Siguiente</a>
+        {% endif %}
+    </span>
+  </section>
+
+{% endblock %}

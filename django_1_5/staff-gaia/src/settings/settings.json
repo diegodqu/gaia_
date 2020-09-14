@@ -1,0 +1,19 @@
+{
+    "APP_DB": "gaiacentroholist_principal",
+    "APP_USER": "gaiacentroholist",
+    "APP_PASSWORD": "SrgQ4iWgxmnp3Kq4x5m",
+    "APP_SECRET_KEY": "dem-f-78237832udhd873jdjdjs82uejdsj3223432",
+    "APP_EMAIL_HOST": "server1.webtiliacloud.com",
+    "APP_EMAIL_HOST_USER": "noreply@gaiacentroholistico.pe",
+    "APP_EMAIL_HOST_USER_LOGIN": "noreply@gaiacentroholistico.pe",
+    "APP_EMAIL_PASSWORD": "OT31wbcu39sr",
+    "APP_EMAIL_HOST_USER_EMAIL": "noreply@gaiacentroholistico.pe",
+
+    "APP_MEDIA": "/home/gaiacentroholist/webapps/media_gaia/",
+    "APP_STATIC": "/home/gaiacentroholist/webapps/static_gaia/",
+
+    "WORKON_HOME": "/home/gaiacentroholist/.virtualenvs",
+    "SETTINGS_PROD": "settings.production"
+
+}
+

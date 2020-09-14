@@ -1,0 +1,106 @@
+{% extends 'web/base.html' %}
+{% block title %} Servicios | Geoterapia, Homaterapia, Reiki y Reflexología {% endblock %}
+{% load static %}
+
+{% block metas %}
+  <meta name="description" content="Baños de hipertermia, Geoterapia, Biomagnetismo, Masaje Tailandés, Reiki, Homaterapia, Reflexología, Restaurante Vegetariano y Bodega Naturista.">
+{%endblock %}
+{% block cssadicional %}
+<link href="{% static '' %}css/jquery.bxslider.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="{% static '' %}js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+{%endblock %}
+{% block classbody %}css-servicios{% endblock %}
+
+{% block content %}
+<section class="w-bg">
+  <div class="sliders w-ancho">
+<ul class="w-slider slider1">
+	{% for row in slyders %}
+	  <li><img class="slide" src="{{ row.imagen.url }}" width="845" heigth="440" alt=""></li>
+	{% endfor %}
+      </ul>		
+    <div class="border"></div>
+  </div>
+</section>
+<section class="info-servcios">
+  <div class="w-main w-ancho cf">
+    <div class="w-cnt cf">
+      <div class="img">
+	<img src="{% static '' %}img/icon-servicios.png" width="67" height="67" alt="">
+      </div>
+      <div class="title">
+	Servicios
+      </div>
+    </div>
+    <div class="cnt-item cf">
+      {% for row in servicios %}
+      <div class="w-items">
+	<img src="{{ row.imagen1.url }}" width="184" height="184" alt="{{ row.nombre }}">
+	<a rel="galeria" class=" img-fancy w-text-fancy" href="{% url 'servicios_detalle' row.slug %}">
+	  <div class="w-text">
+	    VER MAS
+	  </div>
+	</a>
+	<div class="w-text-1">
+	  <h1>{{ row.nombre1  }}</h1>
+	</div>
+	<!-- aqui empieza el fancy boxs-->
+	<div style="display: none;">
+	  <div id="inline{{ forloop.counter }}" class="w-fancy-news">
+	    <div class="cnt-fancy ">	
+	      <div class="w-info-fancy">					
+		<div class="x-title">
+		  {{ row.nombre }}
+		</div>
+		<div class="p">
+		  <img class="w-img" src="{{ row.imagen2.url }}" width="354" height="453" alt="">
+		  <p>{{ row.descripcion |safe }}
+		  </p>
+		</div>
+		<div class="text">
+		  Reserva tu cita:
+		</div>
+		<div class="w-contacto"><br>
+		  {{ info.telefono }}<br>
+		  {{ info.fijo }}<br>
+		  {{ row.telefono }}
+		</div>
+	      </div>
+	    </div>			
+	  </div>	 
+	</div>
+	<!-- aqui termina el fancy boxs -->
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block jsfinal %}
+<script src="{% static '' %}js/jquery.bxslider.min.js"></script>
+<script type="text/javascript" src="{% static '' %}js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+<script type="text/javascript" src="{% static '' %}js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+  $('.slider1').bxSlider({
+  controls:false,
+  pager:true,
+  auto:'true',
+  pause:'9000'
+  
+  });
+  // $(".w-text-fancy").fancybox({
+  // 'titlePosition'		: 'inside',
+  // 'transitionIn'		: 'none',
+  // 'transitionOut'		: 'none'
+  // });
+  
+  });
+</script>
+
+
+
+{% endblock %}

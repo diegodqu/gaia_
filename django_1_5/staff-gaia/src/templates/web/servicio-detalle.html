@@ -1,0 +1,70 @@
+{% extends 'web/base.html' %}
+{% block title %}{{ servicio.seo_titulo }}{% endblock %}
+{% load static %}
+
+{% block metas %}
+<meta name="description" content="{{ servicio.seo_descript }}">
+{%endblock %}
+
+{% block cssadicional %}{%endblock %}
+
+{% block classbody %} {% endblock %}
+
+{% block content %}
+	
+	<section class="detalle-servicios">
+		<div class="cnt-servicios w-ancho">
+			<div class="w-subtitle">
+				<figure>
+					<img {% if servicio.logo %}src="{{ servicio.logo.url }}"{% else %}src="{% static '' %}img/icon-servicios1.png"{% endif %} width="45" height="45" alt="">
+				</figure>
+				<h1>{{ servicio.nombre|title }}</h1>
+			</div>
+			<div class="w-item">
+				<figure>
+					<img src="{{ servicio.imagen2.url }}" width="320" height="368" alt="">
+					<div class="w-sombra"></div>
+				</figure>
+				<div class="w-text">
+					{{ servicio.descripcion |safe }}
+					<div class="reserva-cita">
+						<h3>Reserva tu cita:</h3>
+						<div class="mas-info">
+							<div class="llamar">
+								<figure>
+									<img src="{% static '' %}img/icon-telefono-servicio1.png" width="33" height="34" alt="Telefonos">
+								</figure>
+								<div class="numeros">
+									{{ info.telefono }}
+								</div>
+							</div>
+							<div class="llamar">
+								<figure>
+									<img src="{% static '' %}img/icon-telefono-servicio2.png" width="34" height="34" alt="Telefonos">
+								</figure>
+								<div class="numeros">
+									{{ info.fijo }}
+								</div>
+							</div>
+							{% if servicio.telefono|length > 6 %}
+							<div class="llamar">
+								<figure>
+									<img src="{% static '' %}img/icon-telefono-servicio2.png" width="34" height="34" alt="Telefonos">
+								</figure>
+								<div class="numeros">
+									{{ servicio.telefono }}
+								</div>
+							</div>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+
+{% endblock %}
+
+{% block jsfinal %}
+{% endblock %}

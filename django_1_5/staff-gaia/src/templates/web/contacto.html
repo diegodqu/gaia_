@@ -1,0 +1,194 @@
+{% extends 'web/base.html' %}
+{% load static %}
+
+{% block title %}Contáctenos | Gaia Centro Holístico, Masajes y Spa{% endblock %}
+{% block metas %}
+  <meta name="description" content="Llame al 959593209 o complete el formulario de contacto. Visítenos en Calle Los Gavilanes Mz C Lt 30 Urb. El Club de Santa María, Huachipa - Lima.">
+{%endblock %}
+
+{% block cssadicional %}
+<style type="text/css">
+.errorlist li{
+	color: red !important;
+	text-align: right;
+	font-weight: bold;
+
+}
+</style>
+{% endblock %}
+
+{% block classbody %}css-contactos{% endblock %}
+
+{% block content %}
+<section class="info-nosotros">	
+	<div class="w-main w-ancho">
+	<style>
+		#fancybox-close{ background: url('{% static 'img/img-aspa-x.png' %}') 0px 0px no-repeat !important; right: -15px !important; top: -3px !important;}
+		.w-fancy{ width: 50px; }
+	</style>
+	<div class="w-fancy">
+		<a class="img-fancy" id="enviando" style="display:none"  href="{% static 'img/alerta-enviando.png' %}">ver</a>
+		<a class="img-fancy" id="enviado" style="display:none"  href="{% static 'img/alerta-enviado.png' %}">ver</a>
+		<a class="img-fancy" id="error" style="display:none"  href="{% static 'img/alerta-error.png' %}">ver</a>
+	</div>
+	</div>
+</section>
+
+
+
+  <section class="w-bg">
+    <div id="map-canvas"class="google-map"></div>
+    <div class="title w-ancho">
+      Contacto
+    </div>
+    <div class="border"></div>
+  </section>			
+  <section class="contactos">	
+    <div class="w-main w-ancho cf">	
+      <div class="items">
+	<div class="w-items cf">
+	  <div class="w-img">
+	    <img src="{% static '' %}img/icon-contacto-1.png" alt="">
+	  </div>
+	  <div class="w-info">
+	    <div class="sub-title">
+	      Encuentranos en:
+	    </div>
+	    <div class="p">
+	      {{ info.direccion }}
+	    </div>
+	  </div>
+	</div>
+	<div class="w-items cf">
+	  <div class="w-img">
+	    <img src="{% static '' %}img/icon-contacto-2.png" alt="">
+	  </div>
+	  <div class="w-info">
+	    <div class="sub-title">
+	      Llamenos al:
+	    </div>
+	    <div class="p">
+	      {{ info.telefono }} / {{ info.fijo }}
+	    </div>
+	  </div>
+	</div>
+	<div class="w-items cf">
+	  <div class="w-img">
+	    <img src="{% static '' %}img/icon-contacto-3.png" alt="">
+	  </div>
+	  <div class="w-info">
+	    <div class="sub-title">
+	      Escribenos a:
+	    </div>
+	    <div class="p">
+	      {{ info.email }}
+	    </div>
+	  </div>
+	</div>
+      </div>
+      <div class="w-contactos cf">
+	<div class="w-items cf">
+	  <img src="{% static '' %}img/icon-contacto-4.png" alt="">
+	</div>
+
+	<form class="contactos" action="/contacto/" method="post" id="Contacto" onsubmit="ga('send', 'pageview', '/goals/contacto')">
+	  {% csrf_token %}
+	  <div class="sub-title">
+	    Déjenos sus dudas:
+	  </div>	
+	  <ul>
+	    <li><input type="text" name="nombres" placeholder="Nombre completo*:" class="placeholder nombre-field"></li>
+	    {{ form.nombres.errors }}
+	    <li><input type="text" name="telefono" placeholder="Teléfono(s)*:" class="placeholder telefono-field"></li>
+	    {{ form.telefono.errors }}
+	    <li><input type="text" name="email" placeholder="Email:" class="placeholder mail"></li>
+	    {{ form.email.errors }}
+	    <li><textarea name="mensaje" placeholder="Mensaje adicional:" class="placeholder msj"></textarea></li>
+	    {{ form.mensaje.errors }}
+	    <li>*Todos los campos son obligatorios</li>
+	  </ul>	
+	  <div class="w-envio">	
+	    <button type="submit">ENVIAR</button>
+	  </div>
+	</form>
+	{% if form.is_valid %}
+	  <script>
+	       alert("Su mensaje ha sido enviado");
+	  </script>
+	{% endif %}
+      </div>
+    </div>
+  </section>
+  
+{% endblock %}
+
+
+{% block jsfinal %}
+  <!-- Google maps //-->
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=es"></script>
+    <script>
+
+
+    $(document).ready(function() {
+
+      // google maps
+      var map;
+      var xy = '{{ info.coordenadas }}';
+      var xy_ = xy.split(',');
+      var mapOptions = {
+        zoom: 16,
+        scrollwheel: false,
+        center: new google.maps.LatLng(xy_[0], xy_[1]),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+
+      map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+      var image = new google.maps.MarkerImage(
+        '{{ STATIC_URL }}'
+      );
+       var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(xy_[0], xy_[1]),
+        map: map,
+        //icon: image,
+        title: 'Gaia'
+      });
+
+    });
+   </script>
+   <!-- end google maps //-->
+  <script type="text/javascript">
+     $(document).ready(function() {
+
+$('[placeholder]').focus(function() {
+  var input = $(this);
+  if (input.val() == input.attr('placeholder')) {
+    input.val('');
+    input.removeClass('placeholder');
+  }
+}).blur(function() {
+  var input = $(this);
+  if (input.val() == '' || input.val() == input.attr('placeholder')) {
+    input.addClass('placeholder');
+    input.val(input.attr('placeholder'));
+  }
+}).blur();
+
+$('[placeholder]').parents('form').submit(function() {
+  $(this).find('[placeholder]').each(function() {
+    var input = $(this);
+    if (input.val() == input.attr('placeholder')) {
+      input.val('');
+    }
+  })
+});
+
+  $(".img-fancy").fancybox({
+	'padding'		: '0',
+	'margin'		: '0'
+  });
+
+     });
+</script>
+
+{% endblock %}
+

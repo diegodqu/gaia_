@@ -1,0 +1,148 @@
+{% extends 'web/base.html' %}
+{% block title %} Gaia | Reiki, Reflexología, Terapias Holísticas en Lima {% endblock %}
+{% load static %}
+
+
+{% block metas %}
+  <meta name="description" content="Gaia Centro Holístico, terapias alternativas para el cuidado de la salud corporal y espiritual. Spa, masajes, geoterapia y reflexología en Lima.">
+  <meta name="p:domain_verify" content="dbde80d4b84ddcf8a9e3e1acee251141"/>
+  
+  <!-- Facebook Open Graph Meta Tags -->
+<meta property="og:title" content="Gaia Centro Holistico" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://www.gaiacentroholistico.pe" />
+<meta property="og:image" content="http://www.gaiacentroholistico.pe/static/img/gaia-logo.png" />
+<meta property="og:description" content="Terapias Holisticas en Lima: Reiki, Reflexologi­a, Geoterapia y Masajes." />
+
+{%endblock %}
+{% block cssadicional %}
+<link href="{{ STATIC_URL }}css/jquery.bxslider.css" rel="stylesheet" />
+<link href='http://fonts.googleapis.com/css?family=Pontano+Sans' rel='stylesheet' type='text/css'>
+<style>
+   .css-home .w-item .w-info-medicina .items a {
+     cursor: context-menu;
+   }
+</style>
+
+
+	<div class="w-fancy">
+		<a class="img-fancy" id="enviando-home" style="display:none"  href="{% static '' %}img/alerta-enviando.png">ver</a>
+		<a class="img-fancy" id="enviado-home" style="display:none"  href="{% static '' %}img/alerta-enviado.png">ver</a>
+		<a class="img-fancy" id="error-home" style="display:none"  href="{% static '' %}img/alerta-error.png">ver</a>
+	</div>
+
+
+{%endblock %}
+{% block classbody %}css-home{% endblock %}
+
+{% block content %}
+<section>
+  <div class="slider">
+    <div class="w-info-slider  w-ancho cf">
+      <div class="w-slider">
+	<div class="slider slider1">
+	  {% for row in slyders %}
+	  <img class="slide" src="{{ row.imagen.url }}" width="952" height="419" alt="">
+	  {% endfor %}
+	</div>
+      </div>
+      <div class="w-formulario">
+	<div class="w-title">
+	  ¿Quieres sentirte 
+	  mejor?
+	</div>
+
+	<form class="w-contacto" action="/" method="post" id="Home" onsubmit="ga('send', 'pageview', '/goals/contacto-home')">
+	    {% csrf_token %}
+	  <ul>
+	    <li><input type="text" name="nombres" placeholder="Nombre completo*:" class="placeholder nombre-fld"></li>
+	    <li><input type="text" name="telefono" placeholder="Teléfono(s)*:" class="placeholde telefono-fld"></li>
+	    <li><input type="text" name="email" placeholder="Email:" class="placeholder mail-fld"></li>
+      <li>
+          <select name="servicio" id="servicio" style="width: 98%;">
+              <option value="" disabled selected>Seleccione Servicio</option>
+              {% for row in serv %}
+                <option value="{{ row.nombre }}">{{ row.nombre }}</option>
+              {% endfor %}
+          </select>
+      </li>
+	  </ul>	
+	  <button type="submit">ENVIAR</button>				
+	</form>
+	{% if form.is_valid %}
+	  <script>
+	    alert("Su mensaje ha sido enviado");
+	  </script>
+	  {% endif %}
+      </div>
+    </div>
+  </div>
+  <div class="w-mini-slider">
+    <div class="w-medicinas w-ancho cf">
+      <ul class="cf slider2">
+	{% for row in enlacez %}
+	<li class="t-border"><a href="{{ row.enlace }}">{{ row.titulo }}</a></li>
+	{% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="d-border"></div>
+  <div class="w-item w-ancho cf">
+    <div class="w-info-medicina">
+      {% for row in bloque %}
+      <div class="items">
+	<a href="" class=" w-img">	
+	  <img src="{{ row.imagen1.url }}" width="184" height="224" alt="">
+	</a>
+	<div class="w-text-1">  
+	</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+
+{% block jsfinal %}
+<script src="{{ STATIC_URL }}js/jquery.bxslider.min.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+  $('.slider1').bxSlider({
+  controls:false,
+  pager:true,
+  auto:'true',
+  pause:'9000'
+  
+  });
+
+  $('[placeholder]').focus(function() {
+  var input = $(this);
+  if (input.val() == input.attr('placeholder')) {
+  input.val('');
+  input.removeClass('placeholder');
+  }
+  }).blur(function() {
+  var input = $(this);
+  if (input.val() == '' || input.val() == input.attr('placeholder')) {
+  input.addClass('placeholder');
+  input.val(input.attr('placeholder'));
+  }
+  }).blur();
+  });
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $(".img-fancy").fancybox({
+	'padding'		: '0',
+	'margin'		: '0'
+  });
+});
+</script>
+
+
+{% endblock %}

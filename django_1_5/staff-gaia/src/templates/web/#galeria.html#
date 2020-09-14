@@ -1,0 +1,98 @@
+{% extends 'web/base.html' %}
+{% block title %} Galeria {% endblock %}
+{% load static %}
+
+{% block cssadicional %}
+
+{%endblock %}
+{% block classbody %}css-nosotros-galerias{% endblock %}
+
+{% block content %}
+<div class="w-bg">
+	<div class="w-title-intalaciones">	
+		<div class="w-img">
+			<img src="{% static '' %}img/img-galeria.png" alt="">
+		</div>
+		<div class="w-title">
+			Nuestras instalaciones
+		</div>
+		<div class="w-img">
+			<img src="{% static '' %}img/img-galeria.png" alt="">
+		</div>
+	</div>
+</div>
+<style>
+#cycle-1 div { width:100%; }
+#cycle-2 .cycle-slide { border:3px solid #fff; }
+#cycle-2 .cycle-slide-active { border:3px solid #00a1c1; }
+
+#slideshow-1,#slideshow-2 { width: 50%; max-width: 742px; margin: auto }
+#slideshow-2 { margin-top: 10px }
+.cycle-slideshow img { width: 100%; height: auto; display: block; }
+</style>
+<div class="w-slider-cycle">
+	<div id="slideshow-1">
+	    <div id="cycle-1" class="cycle-slideshow"
+	        data-cycle-slides="> div"
+	        data-cycle-timeout="4000"
+	        data-cycle-prev="#slideshow-1 .cycle-prev"
+	        data-cycle-next="#slideshow-1 .cycle-next"
+	        data-cycle-caption="#slideshow-1 .custom-caption"
+	        data-cycle-fx="scrollHorz"
+	        data-cycle-pager=".cycle-pager"
+	        >
+
+	        <div><img src="{% static '' %}img/01.jpg" width='742' height='485'></div>
+	        <div><img src="{% static '' %}img/02.jpg" width='742' height='485'></div>
+	        <div><img src="{% static '' %}img/01.jpg" width='742' height='485'></div>
+	        <div><img src="{% static '' %}img/02.jpg" width='742' height='485'></div>
+	       	<div><img src="{% static '' %}img/01.jpg" width='742' height='485'></div>
+	    </div>
+	    <div class="cycle-pager"></div>
+	</div>
+</div>
+<div id="slideshow-2">
+    <div id="cycle-2" class="cycle-slideshow"
+        data-cycle-slides="> div"
+        data-cycle-timeout="0"
+        data-cycle-prev="#slideshow-2 .cycle-prev"
+        data-cycle-next="#slideshow-2 .cycle-next"
+        data-cycle-caption="#slideshow-2 .custom-caption"
+        data-cycle-fx="carousel"
+        data-cycle-carousel-visible="4"
+        data-cycle-carousel-fluid=true
+        data-allow-wrap="false"
+        >
+        <div><img src="{% static '' %}img/001.jpg" width='155' height='107'></div>
+        <div><img src="{% static '' %}img/002.jpg" width='155' height='107'></div>
+        <div><img src="{% static '' %}img/003.jpg" width='155' height='107'></div>
+        <div><img src="{% static '' %}img/004.jpg" width='155' height='107'></div>
+        <div><img src="{% static '' %}img/001.jpg" width='155' height='107'></div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block jsfinal %}
+<script src="http://malsup.github.io/jquery.cycle2.js"></script>
+<script src="{% static '' %}js/jquery.cycle2.carousel.js"></script>
+<script src="js/jquery.cycle2.tile.js"></script>
+<script>
+jQuery(document).ready(function($){
+
+var slideshows = $('.cycle-slideshow').on('cycle-next cycle-prev', function(e, opts) {
+    // advance the other slideshow
+    slideshows.not(this).cycle('goto', opts.currSlide);
+});
+
+$('#cycle-2 .cycle-slide').click(function(){
+    var index = $('#cycle-2').data('cycle.API').getSlideIndex(this);
+    slideshows.cycle('goto', index);
+});
+
+});
+</script>
+
+
+{% endblock %}

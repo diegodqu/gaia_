@@ -1,0 +1,47 @@
+{% extends 'web/base.html' %}
+{% block title %} ERROR 404 | PAGINA NO ENCONTRADA {% endblock %}
+{% load static %}
+
+{% block cssadicional %}
+<link href="{% static '' %}css/jquery.bxslider.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="{% static '' %}js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+{%endblock %}
+{% block classbody %}css-servicios{% endblock %}
+
+{% block content %}
+<section class="w-bg">
+	<h1 style="margin:40px auto;font-size:2em;text-align:center"> ERROR 404 <BR/>PAGINA NO ENCONTRADA</h1>
+	<P align="center">Lo sentimos, la página que busca ya no se encuentra aquí.</P>
+	<div style="text-align:center">
+		<a href="/">Intente desde Gaiacentroholistico.pe</a>
+	</div>
+</section>
+
+{% endblock %}
+
+{% block jsfinal %}
+<script src="{% static '' %}js/jquery.bxslider.min.js"></script>
+<script type="text/javascript" src="{% static '' %}js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+<script type="text/javascript" src="{% static '' %}js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+  $('.slider1').bxSlider({
+  controls:false,
+  pager:true,
+  auto:'true',
+  pause:'9000'
+  
+  });
+  $(".w-text-fancy").fancybox({
+  'titlePosition'		: 'inside',
+  'transitionIn'		: 'none',
+  'transitionOut'		: 'none'
+  });
+  
+  });
+</script>
+
+
+
+{% endblock %}

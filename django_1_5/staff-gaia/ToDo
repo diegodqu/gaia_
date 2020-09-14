@@ -1,0 +1,28 @@
+ToDo:
+☐ Añadir un modulo de suscripcion/desuscripción de emails
+☐ Añadir un acortador de url's para cuando se necesite generar vínculos cortos para compartir por facebook, twitter, etc.
+☐ Cambiar los scripts de fabric a modo "host" (esta en modo "local")
+☐ Incluir un archivo LICENSE
+☐ Añadir un sistema de cache a thumbnails.py
+☐ Cambiar el backend de las sesiones a 'Sesiones en cache'
+☐ Implementar los response headers: ETag y last-modified
+☐ Añadir métricas: ¿statsd o mmstats?
+☐ Actualizar los templates de los emails
+
+＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
+Archive:
+ ✔ Añadir Backend de autentificación personalizado @done (13-12-27 14:29)
+ ✔ Mover templatetags genericos a la aplicación 'core' @done (13-12-20 15:10)
+ ✔ Corregir el 'Admin action' que exporta a csv (error con textos unicode) @done (13-12-01 10:59)
+ ✔ Utilizar un mejor sistema de logging(sentry) @done (13-11-09 20:56) @project(ToDo)
+ ✔ Añadir django-reversion a fabric @done (13-11-09 19:27)
+ ✔ Categorías y Productos:  crear modelos, vistas y templates @done (13-11-02 19:35)
+ ✔ Añadir un template personalizado que muestre una vista en árbol de las categorías: django-mptt @done (13-11-02 19:35)
+ ✔ Noticias: crear modelos, vistas y templates @done (13-11-02 18:49)
+ ✔ Verificar si el nuevo middleware permite hacer lo mismo que la variable: ALLOWED_HOSTS @done (13-10-25 16:03)
+ ✔ Documentar! @done (13-09-10 11:58)
+ ✔ Añadir un script de configuracion inicial @done (13-09-03 11:57)
+ ✔ Mejorar la configuración de tinymce @done (13-03-18 17:39)
+ ✔ Mejorar el manejo de las variables del settings (por medio de variables de entorno) @done (13-03-18 17:39)
+ ✔ Añadir un módulo para exportar los emails de contacto en formato csv @done (13-03-18 17:32)
+ ✔ Cambiar el formulario de Contacto por un ModelForm @done (13-01-20 19:14)

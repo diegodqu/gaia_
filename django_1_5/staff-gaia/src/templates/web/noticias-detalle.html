@@ -1,0 +1,17 @@
+{% extends 'web/base.html' %}
+
+{% block title %} {{ noticia.nombre }} {% endblock %}
+
+{% block content %}
+<section id="noticia">
+    <h1>{{ noticia.nombre }}</h1>
+    <time datetime='{{ noticia.fecha }}'>{{noticia.fecha|date:'D d M Y' }}</time>
+
+    <img src="{{ noticia.portada.url }}" alt="{{ noticia.nombre }}">
+    <div class="detalle">
+        {{ noticia.detalle|safe }}
+    </div>
+
+    <a href='{% url 'noticias' %}'>Volver</a>
+</section>
+{% endblock content %}

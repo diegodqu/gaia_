@@ -1,0 +1,13 @@
+/* TEAM */
+
+Web Developer: Alexander Ayasca Esquives
+Email: alexander.ayasca.esquives[at]gmail.com
+Twitter: __alexander_
+Location: Lima, Perú
+
+
+/* SITE */
+
+Standards: HTML5
+Components: Django
+Software: Sublime Text 2

@@ -1,0 +1,24 @@
+[
+{
+    "pk": 1,
+    "model": "web.infosite",
+    "fields": {
+        "site": "http://127.0.0.1:8000",
+        "modified_by": 0,
+        "description": "",
+        "created": "2013-02-11T16:53:48.799",
+        "twitter": "http://twitter.com/",
+        "email_form": "desarrollo@email.com",
+        "modified": "2013-06-10T16:31:19.837",
+        "created_by": 0,
+        "direccion": "Av. Sin Nombre #123",
+        "facebook": "http://facebook.com/",
+        "coordenadas": "",
+        "ga": "",
+        "active": true,
+        "titulo": "",
+        "telefono": "555-5555",
+        "email": "test@test.com"
+    }
+}
+]

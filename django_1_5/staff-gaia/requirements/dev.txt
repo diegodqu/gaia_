@@ -1,0 +1,8 @@
+-r base.txt
+
+django-debug-toolbar
+django-extensions
+pep8
+werkzeug
+sphinx
+coverage
